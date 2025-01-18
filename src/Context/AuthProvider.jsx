@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Authcontext from "./Authcontext";
+import axios from 'axios';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../Authentication/Firebase";
 
@@ -11,7 +12,6 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
       }
-    
       const signIn = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
@@ -39,6 +39,13 @@ const AuthProvider = ({children}) => {
           console.log('CurrentUser-->', currentUser)
           if(currentUser?.email){
             setUser(currentUser)
+            await axios.post(`${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`,
+              {
+                name:currentUser?.displayName,
+                image:currentUser?.photoURL,
+                email:currentUser?.email
+              }
+            )
             
           }else{
             setUser(currentUser)
