@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Authcontext from "./Authcontext";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../Authentication/Firebase";
 
 const AuthProvider = ({children}) => {
@@ -33,6 +33,23 @@ const AuthProvider = ({children}) => {
           photoURL: photo,
         })
       }
+      useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async currentUser => {
+          
+          console.log('CurrentUser-->', currentUser)
+          if(currentUser?.email){
+            setUser(currentUser)
+            
+          }else{
+            setUser(currentUser)
+          }
+          setLoading(false)
+          
+        })
+        return () => {
+          return unsubscribe()
+        }
+      }, [])
     const authInfo = {
         user,
         setUser,
@@ -44,6 +61,7 @@ const AuthProvider = ({children}) => {
         logOut,
         updateUserProfile,
       }
+      
     return (
   <Authcontext.Provider value={authInfo} >
     {children}

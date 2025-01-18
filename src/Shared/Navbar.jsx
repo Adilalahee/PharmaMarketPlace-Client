@@ -46,33 +46,28 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
   {
-      user && user?.email? 
-      <div className='flex gap-2'>
-        <div className='dropdown dropdown-end z-50'>
-            <div
-              tabIndex={0}
-              role='button'
-              className='btn btn-ghost btn-circle avatar'
-            >
-              <div title={user?.displayName} className='w-10 rounded-full'>
-                <img
-                  referrerPolicy='no-referrer'
-                  alt='User Profile Photo'
-                  src={user?.photoURL}
-                />
-              </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
-            >
-              <h1>{user.displayName}</h1>
-            </ul>
-          </div>
-        <button onClick={logOut} className='ml-3'>Log Out</button>
+      user && user?.email?
+      <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+        <img
+          referrerPolicy='no-referrer'
+          alt='User Profile Photo'
+          src={user?.photoURL}
+        />
+        </div>
       </div>
+      <ul
+        tabIndex={0}
+        className="menu menu-sm dropdown-content text-black bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+      <NavLink>Update Profile</NavLink>
+      <NavLink>Dashboard</NavLink>
+      <button onClick={logOut} className='ml-3'>Log Out</button>
+      
+      </ul>
+    </div>
       :
-      <NavLink to='/login' className='btn btn-neutral' to='/login'>Join Us</NavLink>
+      <NavLink to='/login' className='btn btn-neutral'>Join Us</NavLink>
     }
   
 
@@ -83,3 +78,30 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+{/* <button onClick={logOut} className='ml-3'>Log Out</button>
+
+<div className='flex gap-2'>
+<div className='dropdown dropdown-end z-50'>
+    <div
+      tabIndex={0}
+      role='button'
+      className='btn btn-ghost btn-circle avatar'
+    >
+      <div title={user?.displayName} className='w-10 rounded-full'>
+        <img
+          referrerPolicy='no-referrer'
+          alt='User Profile Photo'
+          src={user?.photoURL}
+        />
+      </div>
+    </div>
+    <ul
+      tabIndex={0}
+      className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
+    >
+      <h1>{user.displayName}</h1>
+    </ul>
+  </div>
+
+</div> */}
