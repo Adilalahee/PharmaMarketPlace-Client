@@ -106,7 +106,7 @@ const MedicineDetails = () => {
           </div>
           <hr className='my-6' />
 
-          <Purchasemodal
+          <Purchasemodal medicine={medicine}
           closeModal={closeModal} isOpen={isOpen}></Purchasemodal>
         </div>
       </div>
