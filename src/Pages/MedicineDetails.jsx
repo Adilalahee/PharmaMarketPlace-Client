@@ -3,12 +3,31 @@ import Container from '../Components/Shared/Container';
 import Heading from '../Components/Shared/Heading';
 import Purchasemodal from '../Components/Modal/Purchasemodal';
 import { useState } from 'react';
-const MedicineDetails = () => {
-    let [isOpen, setIsOpen] = useState(false)
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import Loader from '../Components/Shared/Loader';
+import Button from '../Components/Shared/Button';
+import axios from 'axios';
 
+
+const MedicineDetails = () => {
+  const {id}=useParams();
+  console.log(id)
+    let [isOpen, setIsOpen] = useState(false)
+    const {data:medicine=[],isLoading,refetch}=useQuery({
+      queryKey:['medicine',id],
+      queryFn:async()=>{
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/allmedicine/${id}`)
+        return data
+      }
+    })
+    
     const closeModal = () => {
       setIsOpen(false)
     }
+    console.log(medicine)
+    const {image,category,company,description,genericname,price,quantity,seller}=medicine
+    if(isLoading) return <Loader></Loader>
     return (
    <>
        <Container>
@@ -22,7 +41,7 @@ const MedicineDetails = () => {
             <div className='w-full overflow-hidden rounded-xl'>
               <img
                 className='object-cover w-full'
-                src='https://i.ibb.co/DDnw6j9/1738597899-golden-money-plant.jpg'
+                src={image}
                 alt='header image'
               />
             </div>
@@ -32,7 +51,7 @@ const MedicineDetails = () => {
           {/* Plant Info */}
       <Heading
        title={'Money Plant'}
-       subtitle={`Category: ${'Succulent'}`}
+       subtitle={`Category: ${category}`}
       ></Heading>
           <hr className='my-6' />
           <div
@@ -55,7 +74,7 @@ const MedicineDetails = () => {
                 gap-2
               '
           >
-            <div>Seller: Shakil Ahmed Atik</div>
+            <div>Seller: {seller?.name}</div>
 
             <img
               className='rounded-full'
@@ -63,7 +82,7 @@ const MedicineDetails = () => {
               width='30'
               alt='Avatar'
               referrerPolicy='no-referrer'
-              src='https://lh3.googleusercontent.com/a/ACg8ocKUMU3XIX-JSUB80Gj_bYIWfYudpibgdwZE1xqmAGxHASgdvCZZ=s96-c'
+              src={seller?.image}
             />
           </div>
           <hr className='my-6' />
@@ -75,14 +94,14 @@ const MedicineDetails = () => {
                 text-neutral-500
               '
             >
-              Quantity: 10 Units Left Only!
+              Quantity: {quantity}
             </p>
           </div>
           <hr className='my-6' />
           <div className='flex justify-between'>
             <p className='font-bold text-3xl text-gray-500'>Price: 10$</p>
             <div>
-              <Button label='Purchase' />
+              <Button onClick={()=>setIsOpen(true)} label={quantity>0?'Purchase':'Stock Out'}></Button>
             </div>
           </div>
           <hr className='my-6' />

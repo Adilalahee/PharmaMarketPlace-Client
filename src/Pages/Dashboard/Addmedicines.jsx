@@ -12,7 +12,6 @@ const Addmedicines = () => {
     const [uploadImage, setUploadImage] = useState({
       image: { name: 'Upload Button' },
     })
-    console.log(uploadImage)
     const [loading, setLoading] = useState(false)
     // handle form submit
     const handleSubmit = async e => {
@@ -51,7 +50,7 @@ const Addmedicines = () => {
         seller,
       }
   
-      console.table(medicinesData)
+      console.log(medicinesData)
       // save plant in db
       try {
         // post req

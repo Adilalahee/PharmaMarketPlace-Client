@@ -6,7 +6,7 @@ import {
     DialogTitle,
   } from '@headlessui/react'
   import { Fragment } from 'react'
-const Purchasemodal = () => {
+const Purchasemodal = ({ closeModal, isOpen }) => {
     return (
     <>
      <Transition appear show={isOpen} as={Fragment}>

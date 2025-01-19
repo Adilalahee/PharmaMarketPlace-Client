@@ -122,13 +122,13 @@ const Entryform = ({
                 />
               </div>
               <div className='space-y-1 text-sm'>
-                <label htmlFor='quantity' className='block text-gray-600'>
+                <label htmlFor='discount' className='block text-gray-600'>
                   Discount
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
                   name='discount'
-                  id='quantity'
+                  id='discount'
                   type='number'
                   defaultValue={0}
                   placeholder='Available discount'
