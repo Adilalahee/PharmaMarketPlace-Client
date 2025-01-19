@@ -1,74 +1,190 @@
-import React from 'react';
+import { TbFidgetSpinner } from 'react-icons/tb'
 
-const Entryform = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
-      };
+const Entryform = ({
+  handleSubmit,
+  uploadImage,
+  setUploadImage,
+  loading,
+}) => {
     return (
-    <>
-        <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-6">Product Information</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Name Field */}
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium">Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            className="input input-bordered w-full"
-            required
-          />
-        </div>
+  <>
+   <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
+      <form onSubmit={handleSubmit}>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
+          <div className='space-y-6'>
+            {/* Name */}
+            <div className='space-y-1 text-sm'>
+              <label htmlFor='name' className='block text-gray-600'>
+                Name
+              </label>
+              <input
+                className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                name='name'
+                id='name'
+                type='text'
+                placeholder='Plant Name'
+                required
+              />
+            </div>
+            <div className='space-y-1 text-sm'>
+              <label htmlFor='name' className='block text-gray-600'>
+                Generic Name
+              </label>
+              <input
+                className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                name='genericname'
+                id='name'
+                type='text'
+                placeholder='Plant Name'
+                required
+              />
+            </div>
+            {/* Category */}
+            <div className='space-y-1 text-sm'>
+              <label htmlFor='category' className='block text-gray-600 '>
+                Category
+              </label>
+              <select
+                required
+                className='w-full px-4 py-3 border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                name='category'
+              >
+                <option value='Tylenol'>Tylenol</option>
+                <option value='Aspirin'>Aspirin</option>
+                <option value='Ciprofloxacin'>Ciprofloxacin</option>
+                <option value='Sertraline'>Sertraline</option>
+                <option value='Atorvastatin'>Atorvastatin</option>
+                <option value='Aldactone'>Aldactone</option>
+                <option value='Amoxicillin'>Amoxicillin</option>
+              </select>
+            </div>
+            <div className='space-y-1 text-sm'>
+              <label htmlFor='category' className='block text-gray-600 '>
+                Company
+              </label>
+              <select
+                required
+                className='w-full px-4 py-3 border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                name='company'
+              >
+                <option value='Pfizer'>Pfizer</option>
+                <option value='GlaxoSmithKline'>GlaxoSmithKline</option>
+                <option value='Mylan'>Mylan</option>
+                <option value='Merck'>Merck</option>
+                <option value='Novartis'>Novartis</option>
+                <option value='Sanofi'>Sanofi</option>
+              </select>
+            </div>
+            {/* Description */}
+            <div className='space-y-1 text-sm'>
+              <label htmlFor='description' className='block text-gray-600'>
+                Description
+              </label>
 
-        {/* Company Field */}
-        <div>
-          <label htmlFor="company" className="block text-sm font-medium">Company</label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            className="input input-bordered w-full"
-            required
-          />
-        </div>
+              <textarea
+                id='description'
+                placeholder='Write plant description here...'
+                className='block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800  border border-lime-300 bg-white focus:outline-lime-500 '
+                name='description'
+              ></textarea>
+            </div>
+          </div>
+          <div className='space-y-6 flex flex-col'>
+            {/* Price & Quantity */}
+            <div className='flex justify-between gap-2'>
+              {/* Price */}
+              <div className='space-y-1 text-sm'>
+                <label htmlFor='price' className='block text-gray-600 '>
+                  Price
+                </label>
+                <input
+                  className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                  name='price'
+                  id='price'
+                  type='number'
+                  placeholder='Price per unit'
+                  required
+                />
+              </div>
 
-        {/* Price per Unit Field */}
-        <div>
-          <label htmlFor="pricePerUnit" className="block text-sm font-medium">Price per Unit</label>
-          <input
-            id="pricePerUnit"
-            name="pricePerUnit"
-            type="number"
-            className="input input-bordered w-full"
-            required
-          />
-        </div>
+              {/* Quantity */}
+              <div className='space-y-1 text-sm'>
+                <label htmlFor='quantity' className='block text-gray-600'>
+                  Quantity
+                </label>
+                <input
+                  className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                  name='quantity'
+                  id='quantity'
+                  type='number'
+                  placeholder='Available quantity'
+                  required
+                />
+              </div>
+              <div className='space-y-1 text-sm'>
+                <label htmlFor='quantity' className='block text-gray-600'>
+                  Discount
+                </label>
+                <input
+                  className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                  name='discount'
+                  id='quantity'
+                  type='number'
+                  defaultValue={0}
+                  placeholder='Available discount'
+                  required
+                />
+              </div>
+            </div>
+            {/* Image */}
+            <div className=' p-4  w-full  m-auto rounded-lg flex-grow'>
+              <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
+                <div className='flex flex-col w-max mx-auto text-center'>
+                  <label>
+                    <input
+                      onChange={e =>
+                        setUploadImage({
+                          image: e.target.files[0],
+                          url: URL.createObjectURL(e.target.files[0]),
+                        })
+                      }
+                      className='text-sm cursor-pointer w-36 hidden'
+                      type='file'
+                      name='image'
+                      id='image'
+                      accept='image/*'
+                      hidden
+                    />
+                    <div className='bg-lime-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500'>
+                      {uploadImage?.image?.name}
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            {uploadImage && uploadImage?.image?.size && (
+              <div className='flex gap-5 items-center'>
+                <img className='w-20' src={uploadImage?.url} alt='' />
+                <p>Image Size: {uploadImage?.image?.size} Bytes</p>
+              </div>
+            )}
 
-        {/* Quantity Field */}
-        <div>
-          <label htmlFor="quantity" className="block text-sm font-medium">Quantity</label>
-          <input
-            id="quantity"
-            name="quantity"
-            type="number"
-            className="input input-bordered w-full"
-            required
-          />
+            {/* Submit Button */}
+            <button
+              type='submit'
+              className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-lime-500 '
+            >
+              {loading ? (
+                <TbFidgetSpinner className='animate-spin m-auto' />
+              ) : (
+                'Save & Continue'
+              )}
+            </button>
+          </div>
         </div>
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="btn btn-primary w-full mt-4"
-        >
-          Submit
-        </button>
       </form>
     </div>
-
-    </>
+  </>
     );
 };
 

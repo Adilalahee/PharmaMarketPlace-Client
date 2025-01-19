@@ -1,10 +1,16 @@
-import React from 'react';
+import { Helmet } from 'react-helmet-async'
+import Adminstatistics from '../../Components/Dashboard/Statistics/Adminstatistics';
 
 const Statistics = () => {
     return (
-        <div>
-            Hello all Statistics
-        </div>
+    <>
+     <div>
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
+      <Adminstatistics></Adminstatistics>
+    </div>
+    </>
     );
 };
 

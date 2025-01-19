@@ -12,6 +12,8 @@ import Manageusers from "../Pages/Dashboard/Manageusers";
 import Manageorders from "../Pages/Dashboard/Manageorders";
 import Profile from "../Pages/Dashboard/Profile";
 import Myorders from "../Pages/Dashboard/Myorders";
+import Home from "../Pages/Home";
+import MedicineDetails from "../Pages/MedicineDetails";
 
 const router=createBrowserRouter([
     {
@@ -19,6 +21,14 @@ const router=createBrowserRouter([
         element:<Mainlayout></Mainlayout>,
         errorElement:<Errorpage></Errorpage>,
         children:[
+            {
+                path:'/',
+                element:<Home></Home>
+            },
+            {
+                path:'/medicine/:id',
+                element:<MedicineDetails></MedicineDetails>
+            },
             {
                 path:'/login',
                 element:<Login></Login>

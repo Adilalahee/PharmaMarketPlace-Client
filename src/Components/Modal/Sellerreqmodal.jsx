@@ -1,6 +1,12 @@
-import React from 'react';
-
-const Sellerreqmodal = () => {
+import {
+  Dialog,
+  Transition,
+  TransitionChild,
+  DialogTitle,
+  DialogPanel,
+} from '@headlessui/react'
+import { Fragment } from 'react'
+const Sellerreqmodal = ({ closeModal, isOpen }) => {
     return (
     <>
      <Transition appear show={isOpen} as={Fragment}>

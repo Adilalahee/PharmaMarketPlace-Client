@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Authcontext from "../Context/Authcontext";
+import Container from "../Components/Shared/Container";
 
 const Navbar = () => {
     const {user,logOut}=useContext(Authcontext);
@@ -13,7 +14,10 @@ const Navbar = () => {
 </>
     return (
         <>
-      <div className="navbar text-white bg-green-800">
+        <div className='fixed w-full bg-white z-10 shadow-sm'>
+          <div className='py-4 border-b-[1px]'>
+            <Container>
+            <div className="navbar text-white bg-green-800">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -73,6 +77,10 @@ const Navbar = () => {
 
   </div>
 </div>
+            </Container>
+          </div>
+        </div>
+ 
       </>
     );
 };
