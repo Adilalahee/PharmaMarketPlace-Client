@@ -6,11 +6,18 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import Addmedicines from "../Pages/Dashboard/Addmedicines";
 import Privateroute from "./Privateroute";
 import Statistics from "../Pages/Dashboard/Statistics";
+import Errorpage from "../Pages/Errorpage";
+import Myinventory from "../Pages/Dashboard/Myinventory";
+import Manageusers from "../Pages/Dashboard/Manageusers";
+import Manageorders from "../Pages/Dashboard/Manageorders";
+import Profile from "../Pages/Dashboard/Profile";
+import Myorders from "../Pages/Dashboard/Myorders";
 
 const router=createBrowserRouter([
     {
         path:'/',
         element:<Mainlayout></Mainlayout>,
+        errorElement:<Errorpage></Errorpage>,
         children:[
             {
                 path:'/login',
@@ -24,17 +31,48 @@ const router=createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:<DashboardLayout></DashboardLayout>,
+        element:(<Privateroute>
+            <DashboardLayout></DashboardLayout>
+        </Privateroute>),
         children:[
             {
                 index:true,
-                element:<Privateroute>
+                element:(<Privateroute>
                     <Statistics></Statistics>
+                </Privateroute>)
+            },
+            {
+                path:'add-medicine',
+                element:(<Privateroute>
+                    <Addmedicines></Addmedicines>
+                </Privateroute>)
+            },
+            {
+                path:'inventory-items',
+                element:(<Privateroute>
+                    <Myinventory></Myinventory>
+                </Privateroute>)
+            },{
+                path:'manage-users',
+                element:(<Privateroute>
+                    <Manageusers></Manageusers>
+                </Privateroute>)
+            },
+            {
+                path:'manage-orders',
+                element:<Manageorders></Manageorders>
+            },
+            {
+                path:'profile',
+                element:<Privateroute>
+                    <Profile></Profile>
                 </Privateroute>
             },
             {
-                path:'/add-medicine',
-                element:<Addmedicines></Addmedicines>
+                path:'my-orders',
+                element:<Privateroute>
+                    <Myorders></Myorders>
+                </Privateroute>
             }
         ]
     }
