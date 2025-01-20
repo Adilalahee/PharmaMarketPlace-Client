@@ -1,11 +1,26 @@
 import React, { useContext } from 'react';
 import Authcontext from '../Context/Authcontext';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import Loader from '../Components/Shared/Loader';
+import toast from 'react-hot-toast';
 
 const Login = () => {
-    const { signIn, signInWithGoogle } = useContext(Authcontext)
-    const handleGoogle=()=>{
-        signInWithGoogle()
+    const { signIn, signInWithGoogle,loading,user } = useContext(Authcontext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/'
+    if (user) return <Navigate to={from} replace={true} />
+    if (loading) return <Loader></Loader>
+    const handleGoogle= async ()=>{
+      try {
+        //User Registration using google
+        await signInWithGoogle()
+        navigate(from, { replace: true })
+        toast.success('Login Successful')
+      } catch (err) {
+        console.log(err)
+        toast.error(err?.message)
+      }
     }
     return (
   <>

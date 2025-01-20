@@ -14,6 +14,7 @@ import Profile from "../Pages/Dashboard/Profile";
 import Myorders from "../Pages/Dashboard/Myorders";
 import Home from "../Pages/Home";
 import MedicineDetails from "../Pages/MedicineDetails";
+import Cart from "../Pages/Cart";
 
 const router=createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router=createBrowserRouter([
             {
                 path:'/medicine/:id',
                 element:<MedicineDetails></MedicineDetails>
+            },
+            {
+                path:'/cart',
+                element:<Cart></Cart>
             },
             {
                 path:'/login',

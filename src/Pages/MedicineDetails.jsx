@@ -2,16 +2,20 @@ import { Helmet } from 'react-helmet-async'
 import Container from '../Components/Shared/Container';
 import Heading from '../Components/Shared/Heading';
 import Purchasemodal from '../Components/Modal/Purchasemodal';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../Components/Shared/Loader';
 import Button from '../Components/Shared/Button';
 import axios from 'axios';
+import Authcontext from '../Context/Authcontext';
 
 
 const MedicineDetails = () => {
   const {id}=useParams();
+  const {user}=useContext(Authcontext)
+  const navigate = useNavigate()
+  const location = useLocation()
   console.log(id)
     let [isOpen, setIsOpen] = useState(false)
     const {data:medicine=[],isLoading,refetch}=useQuery({
@@ -28,6 +32,14 @@ const MedicineDetails = () => {
     console.log(medicine)
     const {image,category,company,description,genericname,price,quantity,seller}=medicine
     if(isLoading) return <Loader></Loader>
+    const handleCart=e=>{
+      if(user && user.email){
+
+      }
+      else{
+        navigate('/login', {state:{ from: location }})
+      }
+    }
     return (
    <>
        <Container>
@@ -101,7 +113,8 @@ const MedicineDetails = () => {
           <div className='flex justify-between'>
             <p className='font-bold text-3xl text-gray-500'>Price: 10$</p>
             <div>
-              <Button onClick={()=>setIsOpen(true)} label={quantity>0?'Purchase':'Stock Out'}></Button>
+              <Button onClick={handleCart} label={quantity>0?'Add to Cart':'Stock Out'}></Button>
+              {/* <Button onClick={()=>setIsOpen(true)} label={quantity>0?'Purchase':'Stock Out'}></Button> */}
             </div>
           </div>
           <hr className='my-6' />
