@@ -146,7 +146,7 @@ finally{
                 />
               </div>
               <div>
-                <Button onClick={handlePurchase} label={`Pay${totalPrice}`}></Button>
+                <Button onClick={handlePurchase} label={`Add to cart: Due Total ${totalPrice}`}></Button>
               </div>
               </DialogPanel>
             </TransitionChild>

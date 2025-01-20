@@ -9,6 +9,7 @@ import Loader from '../Components/Shared/Loader';
 import Button from '../Components/Shared/Button';
 import axios from 'axios';
 import Authcontext from '../Context/Authcontext';
+import Axiossecure from '../Hooks/Axiossecure';
 
 
 const MedicineDetails = () => {
@@ -16,6 +17,7 @@ const MedicineDetails = () => {
   const {user}=useContext(Authcontext)
   const navigate = useNavigate()
   const location = useLocation()
+  const axiosSecure=Axiossecure()
   console.log(id)
     let [isOpen, setIsOpen] = useState(false)
     const {data:medicine=[],isLoading,refetch}=useQuery({
@@ -30,11 +32,25 @@ const MedicineDetails = () => {
       setIsOpen(false)
     }
     console.log(medicine)
-    const {image,category,company,description,genericname,price,quantity,seller}=medicine
+    const {image,category,company,description,genericname,price,quantity,seller,_id}=medicine
     if(isLoading) return <Loader></Loader>
     const handleCart=e=>{
       if(user && user.email){
-
+        const cartInfo={
+          email:user.email,
+          medicineId:_id,
+          genericname,
+          quantity,
+          seller:{
+            email:seller?.email
+          },
+          price
+        }
+        axiosSecure.post('/carts',cartInfo).then(res=>{
+          console.log(res)
+        }).catch(err=>{
+          console.log(err)
+        })
       }
       else{
         navigate('/login', {state:{ from: location }})
@@ -113,8 +129,8 @@ const MedicineDetails = () => {
           <div className='flex justify-between'>
             <p className='font-bold text-3xl text-gray-500'>Price: 10$</p>
             <div>
-              <Button onClick={handleCart} label={quantity>0?'Add to Cart':'Stock Out'}></Button>
-              {/* <Button onClick={()=>setIsOpen(true)} label={quantity>0?'Purchase':'Stock Out'}></Button> */}
+              {/* <Button onClick={handleCart} label={quantity>0?'Add to Cart':'Stock Out'}></Button> */}
+              <Button onClick={()=>setIsOpen(true)} label={quantity>0?'Purchase':'Stock Out'}></Button>
             </div>
           </div>
           <hr className='my-6' />
