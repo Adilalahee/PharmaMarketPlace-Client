@@ -1,7 +1,21 @@
 import { Helmet } from 'react-helmet-async'
 import Customerorderdata from '../../Components/Dashboard/Tablerows/Customerorderdata';
+import { useContext } from 'react';
+import Authcontext from '../../Context/Authcontext';
+import Axiossecure, { axiosSecure } from '../../Hooks/Axiossecure';
+import { useQuery } from '@tanstack/react-query';
 
 const Myorders = () => {
+  const {user}=useContext(Authcontext)
+  const axiosSecure=Axiossecure()
+  const {data:orders=[],isLoading,refetch}=useQuery({
+    queryKey:['orders',user?.emaail],
+    queryFn:async()=>{
+      await axiosSecure
+   
+    }
+  })
+
     return (
         <>
         <Helmet>

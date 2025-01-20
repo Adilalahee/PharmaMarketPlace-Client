@@ -107,6 +107,7 @@ const MedicineDetails = () => {
           <hr className='my-6' />
 
           <Purchasemodal medicine={medicine}
+          refetch={refetch}
           closeModal={closeModal} isOpen={isOpen}></Purchasemodal>
         </div>
       </div>

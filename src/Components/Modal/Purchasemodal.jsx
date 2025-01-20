@@ -10,7 +10,7 @@ import Button from '../Shared/Button';
 import toast from 'react-hot-toast';
 import Authcontext from '../../Context/Authcontext';
 import Axiossecure,{axiosSecure} from '../../Hooks/Axiossecure';
-const Purchasemodal = ({ closeModal, isOpen,medicine }) => {
+const Purchasemodal = ({ closeModal, isOpen,medicine,refetch }) => {
   const {user}=useContext(Authcontext)
   const axiosSecure =  Axiossecure()
   const {image,category,company,description,genericname,price,quantity,seller,_id}=medicine
@@ -51,7 +51,9 @@ const Purchasemodal = ({ closeModal, isOpen,medicine }) => {
 console.log(purchaseInfo)
 try{
 await axiosSecure.post('/orders',purchaseInfo)
+await axiosSecure.patch(`/medicine/quantity/${_id}`,{updateQuantity:totalQuantity})
 toast.success("done completed")
+refetch()
 }
 catch(err){
   console.log(err)
