@@ -4,18 +4,21 @@ import { useContext } from 'react';
 import Authcontext from '../../Context/Authcontext';
 import Axiossecure, { axiosSecure } from '../../Hooks/Axiossecure';
 import { useQuery } from '@tanstack/react-query';
+import Loader from '../../Components/Shared/Loader';
 
 const Myorders = () => {
   const {user}=useContext(Authcontext)
   const axiosSecure=Axiossecure()
   const {data:orders=[],isLoading,refetch}=useQuery({
-    queryKey:['orders',user?.emaail],
+    queryKey:['orders',user?.email],
     queryFn:async()=>{
-      await axiosSecure
+      const {data}=await axiosSecure(`customer-orders/${user?.email}`)
+      console.log(data)
+      return data
    
     }
   })
-
+if (isLoading) return <Loader></Loader>
     return (
         <>
         <Helmet>
