@@ -7,16 +7,14 @@ import Authcontext from "../../Context/Authcontext";
 const Usecart = () => {
     const {user}=useContext(Authcontext)
     const axiosSecure=Axiossecure();
-    console.log(user)
-const {data: cart=[]}=useQuery({
+const {refetch, data: cart=[]}=useQuery({
 queryKey:['cart',user?.email],
 queryFn:async()=>{
-    const res=await axiosSecure(`/allorders?email=${user.email}`);
-    console.log(res.data)
+    const res=await axiosSecure.get(`/allorders/${user?.email}`);
     return res.data
 }
 })
-return [cart]
+return [cart,refetch]
 };
 
 export default Usecart;
