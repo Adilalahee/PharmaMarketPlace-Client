@@ -6,18 +6,19 @@ import Axiossecure, { axiosSecure } from '../../Hooks/Axiossecure';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../../Components/Shared/Loader';
 
-const Myorders = () => {
+const Myorders = ({orderdata}) => {
   const {user}=useContext(Authcontext)
   const axiosSecure=Axiossecure()
-  const {data:orders=[],isLoading,refetch}=useQuery({
+  const {data:orders={},isLoading,refetch}=useQuery({
     queryKey:['orders',user?.email],
     queryFn:async()=>{
-      const {data}=await axiosSecure(`customer-orders/${user?.email}`)
+      const {data}=await axiosSecure(`allorders/${user?.email}`)
       console.log(data)
       return data
    
     }
   })
+  console.log("orders",orders)
 if (isLoading) return <Loader></Loader>
     return (
         <>
@@ -77,7 +78,9 @@ if (isLoading) return <Loader></Loader>
                     </tr>
                   </thead>
                   <tbody>
-                    <Customerorderdata></Customerorderdata>
+                    {
+                      orders.map(orderdata=><Customerorderdata key={orderdata._id} orderdata={orderdata} refetch={refetch}></Customerorderdata>)
+                    }
                   </tbody>
                 </table>
               </div>

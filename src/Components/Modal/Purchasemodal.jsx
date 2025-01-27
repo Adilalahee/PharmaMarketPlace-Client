@@ -48,7 +48,7 @@ const Purchasemodal = ({ closeModal, isOpen,medicine,refetch }) => {
     })
   }
   const handlePurchase=async()=>{
-console.log(purchaseInfo)
+// console.log(purchaseInfo)
 try{
 await axiosSecure.post('/orders',purchaseInfo)
 await axiosSecure.patch(`/medicine/quantity/${_id}`,{updateQuantity:totalQuantity})

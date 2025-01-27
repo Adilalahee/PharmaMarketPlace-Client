@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BsFingerprint } from 'react-icons/bs'
 import { GrUserAdmin } from 'react-icons/gr'
 import Menuitem from './Menuitem';
 import Sellerreqmodal from '../../Modal/Sellerreqmodal';
+import Authcontext from '../../../Context/Authcontext';
+import Axiossecure from '../../../Hooks/Axiossecure';
 
 const Customermenu = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const {user}=useContext(Authcontext)
+    const axiosSecure=Axiossecure()
 
     const closeModal = () => {
       setIsOpen(false)
+    }
+    const requestHandler=async ()=>{
+      try{
+        const {data}=await axiosSecure.patch(`/users/${user?.email}`)
+      }catch(err){
+        console.log("error")
+      }
     }
     return (
       <>
@@ -24,7 +35,7 @@ const Customermenu = () => {
   <span className='mx-4 font-medium'>Become A Seller</span>
 </div>
 
-<Sellerreqmodal closeModal={closeModal} isOpen={isOpen}></Sellerreqmodal>
+<Sellerreqmodal requestHandler={requestHandler} closeModal={closeModal} isOpen={isOpen}></Sellerreqmodal>
 </>
     );
 };

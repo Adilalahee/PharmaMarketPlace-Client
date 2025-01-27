@@ -7,17 +7,21 @@ import Usecart from '../Components/Home/Usecart';
 const Cart = () => {
     const axiosSecure=Axiossecure()
     const {user}=useContext(Authcontext)
-    console.log('users',user)
+    // console.log('users',user)
     const [cart]=Usecart()
     const totalprice=cart.reduce((total,item) =>total+item.price,0)
-    console.log('H,userello cart',cart)
-console.log(totalprice)
+    // console.log('H,userello cart',cart)
+// console.log(totalprice)
+
+const handlecart=()=>{
+
+}
     return (
         <>
            <div>
             Hello Cart{cart.length}
             totalPrice:{totalprice}
-            <button>Pay Now</button>
+            <button onClick={handlecart}>Pay Now</button>
         </div>
         <div className="overflow-x-auto">
   <table className="table">
