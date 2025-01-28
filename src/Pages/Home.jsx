@@ -12,7 +12,7 @@ const Home = () => {
       <Helmet>
         <title> Pharma Market | Buy Your Desired Medicine</title>
       </Helmet>
-    
+      <Slider></Slider>
       <Category></Category>
       <Articles></Articles>
       <Vendor></Vendor>
