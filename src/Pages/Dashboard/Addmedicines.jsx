@@ -66,7 +66,7 @@ const Addmedicines = () => {
    <>
      <div>
       <Helmet>
-        <title>Add Plant | Dashboard</title>
+        <title>Add Medicine | Dashboard</title>
       </Helmet>
 
       {/* Form */}

@@ -10,6 +10,7 @@ import Sellermenu from './Sellermenu';
 import Adminmenu from './Adminmenu';
 import logo from '../../../assets/logo_pharma_market.png'
 import Userrole from '../../../Hooks/Userrole';
+import cover from "../../../assets/logo_pharma_market.png"
 
 const Sidebar = () => {
     const { logOut } = useContext(Authcontext)
@@ -29,7 +30,7 @@ const Sidebar = () => {
             <Link to='/'>
               <img
                 // className='hidden md:block'
-                src='https://i.ibb.co/4ZXzmq5/logo.png'
+                src={cover}
                 alt='logo'
                 width='100'
                 height='100'

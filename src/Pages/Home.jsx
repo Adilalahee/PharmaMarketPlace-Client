@@ -1,18 +1,18 @@
-import Banner from "../Components/Banner/Banner";
-import Medicines from "../Components/Home/Medicines";
+
 import { Helmet } from 'react-helmet-async'
 import Vendor from "./Vendor";
 import Articles from "./Articles";
 import Category from "../Components/Category/Category";
+import Slider from "../Components/Banner/Slider";
 
 const Home = () => {
     return (
      <>
          <div>
       <Helmet>
-        <title> PlantNet | Buy Your Desired Medicine</title>
+        <title> Pharma Market | Buy Your Desired Medicine</title>
       </Helmet>
-      <Banner></Banner>
+    
       <Category></Category>
       <Articles></Articles>
       <Vendor></Vendor>
