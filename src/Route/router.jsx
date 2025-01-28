@@ -17,6 +17,7 @@ import MedicineDetails from "../Pages/MedicineDetails";
 import Cart from "../Pages/Cart";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
+import Medicines from "../Components/Home/Medicines";
 
 const router=createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router=createBrowserRouter([
             {
                 path:'/medicine/:id',
                 element:<MedicineDetails></MedicineDetails>
+            },
+            {
+                path:'/medicines',
+                element:<Medicines></Medicines>
             },
             {
                 path:'/cart',
