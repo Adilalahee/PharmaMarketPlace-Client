@@ -31,7 +31,7 @@ const Vendor = () => {
               </p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-gray-700 font-medium">⭐ 4.5/5</span>
-                <button className="btn btn-primary">Shop Now</button>
+                <button className="btn bg-green-700">Shop Now</button>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@ const Vendor = () => {
               </p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-gray-700 font-medium">⭐ 4.7/5</span>
-                <button className="btn btn-primary">Shop Now</button>
+                <button className="btn bg-green-700">Shop Now</button>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@ const Vendor = () => {
               </p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-gray-700 font-medium">⭐ 4.3/5</span>
-                <button className="btn btn-primary">Shop Now</button>
+                <button className="btn bg-green-700">Shop Now</button>
               </div>
             </div>
           </div>
