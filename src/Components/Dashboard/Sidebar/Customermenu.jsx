@@ -5,6 +5,7 @@ import Menuitem from './Menuitem';
 import Sellerreqmodal from '../../Modal/Sellerreqmodal';
 import Authcontext from '../../../Context/Authcontext';
 import Axiossecure from '../../../Hooks/Axiossecure';
+import toast from 'react-hot-toast';
 
 const Customermenu = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -17,9 +18,15 @@ const Customermenu = () => {
     const requestHandler=async ()=>{
       try{
         const {data}=await axiosSecure.patch(`/users/${user?.email}`)
+        toast.success('Applied')
       }catch(err){
         console.log("error")
+        toast.error('Already Applied')
       }
+      finally{
+        closeModal()
+      }
+      
     }
     return (
       <>

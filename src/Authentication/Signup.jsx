@@ -33,6 +33,18 @@ const Signup = () => {
         toast.error(error?.message)
       }
     }
+    const handleGoogleSignIn = async () => {
+      try {
+        //User Registration using google
+        await signInWithGoogle()
+  
+        navigate('/')
+        toast.success('Signup Successful')
+      } catch (err) {
+        console.log(err)
+        toast.error(err?.message)
+      }
+    }
     return (
      <>
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -44,9 +56,10 @@ const Signup = () => {
           <div className="mb-4">
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
             <input
-              type="text"
-              id="name"
-              placeholder="John Doe"
+          type='text'
+          name='name'
+          id='name'
+          placeholder='Enter Your Name Here'
               className="input input-bordered w-full mt-2"
             />
           </div>
@@ -55,9 +68,11 @@ const Signup = () => {
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input
-              type="email"
-              id="email"
-              placeholder="you@example.com"
+              type='email'
+              name='email'
+              id='email'
+              required
+              placeholder='Enter Your Email Here'
               className="input input-bordered w-full mt-2"
             />
           </div>
@@ -66,9 +81,12 @@ const Signup = () => {
           <div className="mb-4">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
             <input
-              type="password"
-              id="password"
-              placeholder="********"
+              type='password'
+              name='password'
+              autoComplete='new-password'
+              id='password'
+              required
+              placeholder='*******'
               className="input input-bordered w-full mt-2"
             />
           </div>
@@ -104,6 +122,13 @@ const Signup = () => {
             </button>
           </div>
         </form>
+        <div
+          onClick={handleGoogleSignIn}
+          className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'
+        >
+
+          <p>Continue with Google</p>
+        </div>
       </div>
     </div>
      </>
@@ -111,3 +136,6 @@ const Signup = () => {
 };
 
 export default Signup;
+
+// adilmdctg123@gmail.com
+// 12398765

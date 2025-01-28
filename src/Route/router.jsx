@@ -15,6 +15,8 @@ import Myorders from "../Pages/Dashboard/Myorders";
 import Home from "../Pages/Home";
 import MedicineDetails from "../Pages/MedicineDetails";
 import Cart from "../Pages/Cart";
+import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
 
 const router=createBrowserRouter([
     {
@@ -59,23 +61,33 @@ const router=createBrowserRouter([
             {
                 path:'add-medicine',
                 element:(<Privateroute>
+                    <SellerRoute>
                     <Addmedicines></Addmedicines>
+                    </SellerRoute>
                 </Privateroute>)
             },
             {
                 path:'inventory-items',
                 element:(<Privateroute>
+                    <SellerRoute>
                     <Myinventory></Myinventory>
+                    </SellerRoute>
                 </Privateroute>)
             },{
                 path:'manage-users',
                 element:(<Privateroute>
+                    <AdminRoute>
                     <Manageusers></Manageusers>
+                    </AdminRoute>
                 </Privateroute>)
             },
             {
                 path:'manage-orders',
-                element:<Manageorders></Manageorders>
+                element:<Privateroute>
+                    <SellerRoute>
+                    <Manageorders></Manageorders>
+                    </SellerRoute>
+                </Privateroute>
             },
             {
                 path:'profile',

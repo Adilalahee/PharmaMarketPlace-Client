@@ -13,7 +13,7 @@ const Customerorderdata = ({orderdata,refetch}) => {
         await axiosSecure.delete(`/orders/${_id}`)
         refetch()
       }
-      catch(err)
+      catch{err}
     }
     return (
    <>

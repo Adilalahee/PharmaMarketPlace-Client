@@ -11,6 +11,23 @@ const Login = () => {
     const from = location?.state?.from?.pathname || '/'
     if (user) return <Navigate to={from} replace={true} />
     if (loading) return <Loader></Loader>
+    const handleSubmit = async event => {
+      event.preventDefault()
+      const form = event.target
+      const email = form.email.value
+      const password = form.password.value
+  
+      try {
+        //User Login
+        await signIn(email, password)
+  
+        navigate(from, { replace: true })
+        toast.success('Login Successful')
+      } catch (err) {
+        console.log(err)
+        toast.error(err?.message)
+      }
+    }
     const handleGoogle= async ()=>{
       try {
         //User Registration using google
@@ -29,18 +46,25 @@ const Login = () => {
         <h1 className="text-3xl font-semibold text-center text-gray-700">
             DaisyUI
         </h1>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
                 <label className="label">
                     <span className="text-base label-text">Email</span>
                 </label>
-                <input type="text" placeholder="Email Address" className="w-full input input-bordered" />
+                <input  type='email'
+                name='email'
+                id='email'
+               placeholder="Email Address" className="w-full input input-bordered" />
             </div>
             <div>
                 <label className="label">
                     <span className="text-base label-text">Password</span>
                 </label>
-                <input type="password" placeholder="Enter Password" className="w-full input input-bordered" />
+                <input   
+                type='password'
+                name='password'
+                autoComplete='current-password'
+                id='password' placeholder="Enter Password" className="w-full input input-bordered" />
             </div>
             <div>
                 <button className="btn btn-block btn-neutral">Login</button>

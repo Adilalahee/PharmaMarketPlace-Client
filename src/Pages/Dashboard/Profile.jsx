@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import Authcontext from '../../Context/Authcontext';
 import coverImg from '../../assets/cover.jpg'
 import { Helmet } from 'react-helmet-async'
+import Userrole from '../../Hooks/Userrole';
 
 const Profile = () => {
     const { user } = useContext(Authcontext)
+    const [role,isLoading]=Userrole()
     return (
    <>
     <div className='flex justify-center items-center h-screen'>
@@ -27,7 +29,7 @@ const Profile = () => {
           </a>
 
           <p className='p-2 px-4 text-xs text-white bg-lime-500 rounded-full'>
-            Customer
+            {role}
           </p>
           <p className='mt-2 text-xl font-medium text-gray-800 '>
             User Id: {user.uid}

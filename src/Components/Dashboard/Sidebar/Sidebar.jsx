@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
-import { BsGraphUp } from 'react-icons/bs'
 import Menuitem from './Menuitem';
 import Customermenu from './Customermenu';
 import Sellermenu from './Sellermenu';
 import Adminmenu from './Adminmenu';
 import logo from '../../../assets/logo_pharma_market.png'
+import Userrole from '../../../Hooks/Userrole';
 
 const Sidebar = () => {
     const { logOut } = useContext(Authcontext)
     const [isActive, setActive] = useState(false)
+    const [role,isLoading]=Userrole()
   
     // Sidebar Responsive Handler
     const handleToggle = () => {
@@ -69,14 +70,14 @@ const Sidebar = () => {
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
             <nav>
-              {/*  Menu Items */}
-             <Customermenu></Customermenu>
-             <Sellermenu></Sellermenu>
+              {role==='Customer' && <Customermenu></Customermenu>}
+              {role==='Seller' && <Sellermenu></Sellermenu>}
+              {role==='Admin' && <Adminmenu></Adminmenu>}
+             
+             
 
-            <Menuitem    icon={BsGraphUp}
-                label='Statistics'
-                address='/dashboard'></Menuitem>
-              <Adminmenu></Adminmenu>
+           
+              
             </nav>
           </div>
         </div>
