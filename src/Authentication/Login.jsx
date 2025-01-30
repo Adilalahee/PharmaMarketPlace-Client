@@ -94,7 +94,9 @@ const Login = () => {
               </svg>
               <h3>Sign In with Google</h3>
             </div>
-            <h3 className='text-xl mt-3'>Don't have an account? <NavLink to='/signup'>Register</NavLink></h3>
+            <div>
+            <h3 className='text-xl mt-3'>Don't have an account? <NavLink to='/signup'>Sign Up</NavLink></h3>
+            </div>
           </div>
         </form>
     </div>

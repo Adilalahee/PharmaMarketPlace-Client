@@ -4,6 +4,7 @@ import Axiossecure from '../Hooks/Axiossecure';
 import Authcontext from '../Context/Authcontext';
 import Usecart from '../Components/Home/Usecart';
 import Cartdata from '../Components/Dashboard/Tablerows/Cartdata';
+import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
     const axiosSecure=Axiossecure()
@@ -19,11 +20,11 @@ const handlecart=()=>{
 }
     return (
         <>
-           {/* <div>
+           <div>
             Hello Cart{cart.length}
             totalPrice:{totalprice}
-            <button onClick={handlecart}>Pay Now</button>
-        </div> */}
+            <NavLink to='/checkout'><button onClick={handlecart}>Check Out</button></NavLink>
+        </div>
               <div className='container mx-auto px-4 sm:px-8'>
           <div className='py-8'>
             <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>

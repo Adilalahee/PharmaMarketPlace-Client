@@ -22,6 +22,8 @@ import AskAdvertise from "../Pages/Dashboard/AskAdvertise";
 import ManageCategory from "../Pages/Dashboard/ManageCategory";
 import ManageBanner from "../Pages/Dashboard/ManageBanner";
 import SalesReport from "../Pages/Dashboard/SalesReport";
+import Checkout from "../Pages/Checkout";
+import Invoice from "../Pages/Invoice";
 
 const router=createBrowserRouter([
     {
@@ -52,7 +54,20 @@ const router=createBrowserRouter([
             {
                 path:'/signup',
                 element:<Signup></Signup>
-            }
+            },
+            {
+                path:'/checkout',
+                element:<Privateroute>
+                    <Checkout></Checkout>
+                </Privateroute>
+            },
+            {
+                path:'/payment',
+                element:<Privateroute>
+                    <Invoice></Invoice>
+                </Privateroute>
+            },
+            
         ]
     },
     {
