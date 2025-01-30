@@ -9,7 +9,7 @@ const Vendor = () => {
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800">Multi-Vendor Medicine Platform</h1>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Discover a wide range of medicines from trusted vendors. Compare prices, read reviews, and order with confidence.
+            Discover a wide range of medicine from trusted vendors. Compare prices, read reviews, and order with confidence.
           </p>
         </header>
 
