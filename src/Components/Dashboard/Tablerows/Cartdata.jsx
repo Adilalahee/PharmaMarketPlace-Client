@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import Deletemodal from '../../Modal/Deletemodal';
 import Updatemedicinemodal from '../../Modal/Updatemedicinemodal';
 
-const Medicinedata = ({refetch,medicine}) => {
-  const {image,name,category,price,quantity}=medicine
-    let [isOpen, setIsOpen] = useState(false)
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-  
-    function openModal() {
-      setIsOpen(true)
-    }
-    function closeModal() {
-      setIsOpen(false)
-    }
+const Cartdata = ({carts}) => {
+    const {image,name,category,quantity,price}=carts
+        let [isOpen, setIsOpen] = useState(false)
+        const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+      
+        function openModal() {
+          setIsOpen(true)
+        }
+        function closeModal() {
+          setIsOpen(false)
+        }
     return (
-      <>
+        <>
         <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <div className='flex items-center'>
@@ -42,7 +42,7 @@ const Medicinedata = ({refetch,medicine}) => {
         <p className='text-gray-900 whitespace-no-wrap'>{quantity}</p>
       </td>
 
-      {/* <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <span
           onClick={openModal}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
@@ -68,10 +68,10 @@ const Medicinedata = ({refetch,medicine}) => {
         </span>
        <Updatemedicinemodal  isOpen={isEditModalOpen}
           setIsEditModalOpen={setIsEditModalOpen}></Updatemedicinemodal>
-      </td> */}
+      </td>
     </tr>
       </>
     );
 };
 
-export default Medicinedata;
+export default Cartdata;

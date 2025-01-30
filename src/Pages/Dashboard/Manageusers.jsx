@@ -1,7 +1,22 @@
 import { Helmet } from 'react-helmet-async'
 import Userdata from '../../Components/Dashboard/Tablerows/Userdata';
+import Axiossecure from '../../Hooks/Axiossecure';
+import { useQuery } from '@tanstack/react-query';
+import { useContext } from 'react';
+import Authcontext from '../../Context/Authcontext';
+import Loader from '../../Components/Shared/Loader';
 
 const Manageusers = () => {
+  const {user}=useContext(Authcontext)
+  const axiosSecure=Axiossecure()
+const {data: users=[],isLoading,refetch }=useQuery({
+queryKey:['users',user?.email],
+queryFn:async()=>{
+  const res=await axiosSecure(`/all-users/${user?.email}`)
+  return res.data
+}
+})
+if(isLoading) return <Loader></Loader>
     return (
       <>
       <div className='container mx-auto px-4 sm:px-8'>
@@ -42,7 +57,12 @@ const Manageusers = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <Userdata></Userdata>
+                  {
+                    users.map(userdata=>
+                    <Userdata
+                    key={userdata?._id} refetch={refetch} userdata={userdata}></Userdata>)
+                  }
+                  
                 </tbody>
               </table>
             </div>

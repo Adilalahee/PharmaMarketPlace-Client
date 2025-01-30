@@ -10,11 +10,15 @@ const Sellermenu = () => {
         label='Add Medicine'
         address='add-medicine'>
     </Menuitem>
-      <Menuitem icon={MdHomeWork} label='My Inventory' address='my-inventory'></Menuitem>
+      <Menuitem icon={MdHomeWork} label='Manage Medicine' address='inventory-items'></Menuitem>
     <Menuitem
      icon={MdOutlineManageHistory}
-     label='Manage Orders'
+     label='Payment History'
      address='manage-orders'></Menuitem>
+         <Menuitem
+     icon={MdOutlineManageHistory}
+     label='Advertise'
+     address='advertise'></Menuitem>
       
       </>
     );

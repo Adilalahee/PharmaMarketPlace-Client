@@ -18,6 +18,10 @@ import Cart from "../Pages/Cart";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import Medicines from "../Components/Home/Medicines";
+import AskAdvertise from "../Pages/Dashboard/AskAdvertise";
+import ManageCategory from "../Pages/Dashboard/ManageCategory";
+import ManageBanner from "../Pages/Dashboard/ManageBanner";
+import SalesReport from "../Pages/Dashboard/SalesReport";
 
 const router=createBrowserRouter([
     {
@@ -78,7 +82,8 @@ const router=createBrowserRouter([
                     <Myinventory></Myinventory>
                     </SellerRoute>
                 </Privateroute>)
-            },{
+            },
+            {
                 path:'manage-users',
                 element:(<Privateroute>
                     <AdminRoute>
@@ -87,10 +92,42 @@ const router=createBrowserRouter([
                 </Privateroute>)
             },
             {
+                path:'sales-report',
+                element:(<Privateroute>
+                    <AdminRoute>
+                    <SalesReport></SalesReport>
+                    </AdminRoute>
+                </Privateroute>)
+            },
+            {
+                path:'manage-banner',
+                element:(<Privateroute>
+                    <AdminRoute>
+                    <ManageBanner></ManageBanner>
+                    </AdminRoute>
+                </Privateroute>)
+            },
+            {
+                path:'manage-category',
+                element:(<Privateroute>
+                    <AdminRoute>
+                    <ManageCategory></ManageCategory>
+                    </AdminRoute>
+                </Privateroute>)
+            },
+            {
                 path:'manage-orders',
                 element:<Privateroute>
                     <SellerRoute>
                     <Manageorders></Manageorders>
+                    </SellerRoute>
+                </Privateroute>
+            },
+            {
+                path:'advertise',
+                element:<Privateroute>
+                    <SellerRoute>
+                    <AskAdvertise></AskAdvertise>
                     </SellerRoute>
                 </Privateroute>
             },

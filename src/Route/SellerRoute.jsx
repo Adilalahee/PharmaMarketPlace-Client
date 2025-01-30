@@ -3,7 +3,7 @@ import Userrole from '../Hooks/Userrole';
 import { Navigate } from 'react-router-dom';
 import Loader from '../Components/Shared/Loader';
 
-const SellerRoute = () => {
+const SellerRoute = ({children}) => {
     const [role, isLoading] = Userrole()
 
     if(isLoading){

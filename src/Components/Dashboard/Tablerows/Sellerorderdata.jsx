@@ -1,9 +1,24 @@
 import React, { useState } from 'react';
 import Deletemodal from '../../Modal/Deletemodal';
+import Axiossecure from '../../../Hooks/Axiossecure';
 
-const Sellerorderdata = () => {
+const Sellerorderdata = ({ordersData,refetch}) => {
+  const axiosSecure=Axiossecure()
     let [isOpen, setIsOpen] = useState(false)
   const closeModal = () => setIsOpen(false)
+  const {name,customer,price,quantity,address,status,_id}=ordersData
+  const handleDelete=async()=>{
+    try{
+      await axiosSecure.delete(`/orders/${_id}`)
+      refetch()
+    }
+    catch(err){
+      console.log(err)
+    }
+    finally{
+      setIsOpen(false)
+    }
+  }
     return (
     <>
     <tr>
@@ -11,19 +26,19 @@ const Sellerorderdata = () => {
         <p className='text-gray-900 whitespace-no-wrap'>{name}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>abc@gmail.com</p>
+        <p className='text-gray-900 whitespace-no-wrap'>{customer?.email}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>$120</p>
+        <p className='text-gray-900 whitespace-no-wrap'>${price}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>5</p>
+        <p className='text-gray-900 whitespace-no-wrap'>{quantity}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>Dhaka</p>
+        <p className='text-gray-900 whitespace-no-wrap'>{address}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>Pending</p>
+        <p className='text-gray-900 whitespace-no-wrap'>{status}</p>
       </td>
 
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
@@ -48,7 +63,7 @@ const Sellerorderdata = () => {
             <span className='relative'>Cancel</span>
           </button>
         </div>
-        <Deletemodal isOpen={isOpen} closeModal={closeModal}></Deletemodal>
+        <Deletemodal handleDelete={handleDelete} isOpen={isOpen} closeModal={closeModal}></Deletemodal>
       </td>
     </tr>
     </>

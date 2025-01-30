@@ -1,6 +1,7 @@
 import React from 'react';
 import Userrole from '../Hooks/Userrole';
 import { Navigate } from 'react-router-dom';
+import Loader from '../Components/Shared/Loader';
 
 const AdminRoute = ({children}) => {
     const [role, isloading] = Userrole()
