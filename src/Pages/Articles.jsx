@@ -19,7 +19,7 @@ const Articles = () => {
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-400">January 20, 2025</span>
-                <a href="#" className="btn bg-green-700 text-sm">
+                <a href="#" className="btn bg-green-700 text-white text-sm">
                   Read More
                 </a>
               </div>
@@ -36,7 +36,7 @@ const Articles = () => {
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-400">January 18, 2025</span>
-                <a href="#" className="btn bg-green-700 text-sm">
+                <a href="#" className="btn bg-green-700 text-white text-sm">
                   Read More
                 </a>
               </div>
@@ -53,7 +53,7 @@ const Articles = () => {
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-400">January 15, 2025</span>
-                <a href="#" className="btn bg-green-700 text-sm">
+                <a href="#" className="btn bg-green-700 text-white text-sm">
                   Read More
                 </a>
               </div>
@@ -70,7 +70,7 @@ const Articles = () => {
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-400">January 10, 2025</span>
-                <a href="#" className="btn bg-green-700 text-sm">
+                <a href="#" className="btn bg-green-700 text-white text-sm">
                   Read More
                 </a>
               </div>
@@ -87,7 +87,7 @@ const Articles = () => {
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-400">January 5, 2025</span>
-                <a href="#" className="btn bg-green-700 text-sm">
+                <a href="#" className="btn bg-green-700 text-white text-sm">
                   Read More
                 </a>
               </div>
@@ -104,7 +104,7 @@ const Articles = () => {
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-400">December 30, 2024</span>
-                <a href="#" className="btn bg-green-700 text-sm">
+                <a href="#" className="btn bg-green-700 text-white text-sm">
                   Read More
                 </a>
               </div>

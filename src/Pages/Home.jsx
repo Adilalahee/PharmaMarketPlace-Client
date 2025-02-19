@@ -6,6 +6,7 @@ import Category from "../Components/Category/Category";
 import Slider from "../Components/Banner/Slider";
 import Featured from './Featured';
 import Contact from './contact';
+import Choose from './Choose';
 
 const Home = () => {
     return (
@@ -19,8 +20,8 @@ const Home = () => {
       <Featured></Featured>
       <Articles></Articles>
       <Vendor></Vendor>
+      <Choose></Choose>
       <Contact></Contact>
-
     </div>
      </>
     );

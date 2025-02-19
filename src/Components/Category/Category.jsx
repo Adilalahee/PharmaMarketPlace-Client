@@ -17,7 +17,7 @@ const Category = () => {
               <p className="text-sm text-green-600 mb-4">
                 Find effective medications for various types of pain relief, from headaches to muscle pain.
               </p>
-              <Link to="/medicines" className="btn btn-success text-sm">
+              <Link to="/medicines" className="btn btn-success text-white text-sm">
                 Explore
               </Link>
             </div>
@@ -30,7 +30,7 @@ const Category = () => {
               <p className="text-sm text-green-600 mb-4">
                 Browse our collection of antibiotics to treat infections effectively and safely.
               </p>
-              <Link to="/medicines" className="btn btn-success text-sm">
+              <Link to="/medicines" className="btn btn-success text-white text-sm">
                 Explore
               </Link>
             </div>
@@ -43,7 +43,7 @@ const Category = () => {
               <p className="text-sm text-green-600 mb-4">
                 Discover essential vitamins to boost your immunity and maintain overall health.
               </p>
-              <Link to="/medicines" className="btn btn-success text-sm">
+              <Link to="/medicines" className="btn btn-success text-white text-sm">
                 Explore
               </Link>
             </div>
@@ -56,7 +56,7 @@ const Category = () => {
               <p className="text-sm text-green-600 mb-4">
                 Explore the benefits of natural herbal remedies for various health conditions.
               </p>
-              <Link to="/medicines" className="btn btn-success text-sm">
+              <Link to="/medicines" className="btn btn-success text-white text-sm">
                 Explore
               </Link>
             </div>
