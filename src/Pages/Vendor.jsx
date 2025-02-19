@@ -1,9 +1,11 @@
 import React from 'react';
+import Container from '../Components/Shared/Container';
 
 const Vendor = () => {
     return (
  <>
-  <div className="min-h-screen bg-gray-50 py-12">
+<Container>
+<div className="min-h-screen py-12">
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <header className="text-center mb-12">
@@ -16,7 +18,7 @@ const Vendor = () => {
         {/* Vendor Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Vendor Card 1 */}
-          <div className="card bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div className="card bg-gray-100  shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <figure className="px-6 pt-6">
               <img
                 src="https://via.placeholder.com/300x200"
@@ -31,13 +33,13 @@ const Vendor = () => {
               </p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-gray-700 font-medium">⭐ 4.5/5</span>
-                <button className="btn bg-green-700">Shop Now</button>
+                <button className="btn bg-green-700 text-white">Shop Now</button>
               </div>
             </div>
           </div>
 
           {/* Vendor Card 2 */}
-          <div className="card bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div className="card bg-gray-100 shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <figure className="px-6 pt-6">
               <img
                 src="https://via.placeholder.com/300x200"
@@ -52,13 +54,13 @@ const Vendor = () => {
               </p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-gray-700 font-medium">⭐ 4.7/5</span>
-                <button className="btn bg-green-700">Shop Now</button>
+                <button className="btn bg-green-700 text-white">Shop Now</button>
               </div>
             </div>
           </div>
 
           {/* Vendor Card 3 */}
-          <div className="card bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div className="card bg-gray-100 shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <figure className="px-6 pt-6">
               <img
                 src="https://via.placeholder.com/300x200"
@@ -73,13 +75,14 @@ const Vendor = () => {
               </p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-gray-700 font-medium">⭐ 4.3/5</span>
-                <button className="btn bg-green-700">Shop Now</button>
+                <button className="btn bg-green-700 text-white">Shop Now</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+</Container>
  </>
     );
 };

@@ -4,6 +4,8 @@ import Vendor from "./Vendor";
 import Articles from "./Articles";
 import Category from "../Components/Category/Category";
 import Slider from "../Components/Banner/Slider";
+import Featured from './Featured';
+import Contact from './contact';
 
 const Home = () => {
     return (
@@ -14,8 +16,11 @@ const Home = () => {
       </Helmet>
       <Slider></Slider>
       <Category></Category>
+      <Featured></Featured>
       <Articles></Articles>
       <Vendor></Vendor>
+      <Contact></Contact>
+
     </div>
      </>
     );

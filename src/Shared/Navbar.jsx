@@ -10,15 +10,18 @@ const Navbar = () => {
     const links=<>
     <li><Link to="/">Home</Link></li>
     <li><Link to="/medicines">Shop</Link></li>
-    <li><Link to="/about">About Us</Link></li>
+    <li><Link to="/about">About</Link></li>
+    <li><Link to="/">Contact</Link></li>
+</>
+    const privatelinks=<>
     <li><Link to="/cart">My Cart</Link></li>
 </>
     return (
         <>
-        <div className='fixed w-full bg-white z-10 shadow-sm'>
+        <div className='fixed w-full bg-[#F8F9FA] z-10 shadow-sm'>
           <div className='py-4 border-b-[1px]'>
             <Container>
-            <div className="navbar text-white bg-green-800">
+            <div className="navbar text-[#008080] bg-[#F8F9FA]">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,8 +47,9 @@ const Navbar = () => {
     <a className="btn btn-ghost text-xl">Pharma Market</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="menu menu-horizontal px-1 text-xl">
 {links}
+{user && user?.email? [privatelinks] :''}
     </ul>
 
   </div>
